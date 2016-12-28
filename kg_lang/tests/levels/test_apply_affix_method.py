@@ -1,10 +1,10 @@
 # coding=utf-8
-from kg_lang.kyrgyz.affixes import apply_affix
+from kg_lang.kyrgyz.affixing import apply_affix
 from kg_lang.kyrgyz.lang import KyrgyzWord
 from kg_lang.tests import KGTestCase
 
 
-class ApplyAffixMethodTest(KGTestCase):
+class ApplyAffixMethodAndChangeHistoryTest(KGTestCase):
     def test_method_can_apply_two_level_affix(self):
         word_object = KyrgyzWord(u"бала")
         result = apply_affix({'taandyk': ['jondomo']}, word_object)

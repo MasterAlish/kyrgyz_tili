@@ -1,18 +1,16 @@
 # coding=utf-8
-from kg_lang.kyrgyz.chak import UchurChak
-from kg_lang.kyrgyz.kyimyl_atooch import KyimylAtooch, KyimylAtooch2
+from kg_lang.kyrgyz.etish.kyimyl_atooch import KyimylAtooch2
 from kg_lang.kyrgyz.lang import KyrgyzWord
 from kg_lang.tests import KGTestCase
 
 
 class KyimylAtooch2Test(KGTestCase):
     def test_1(self):
-
         data = self.get_data()
 
-        for word, form in data.items():
-            kyimyl_atooch2 = KyimylAtooch2(KyrgyzWord(word, False))
-            self.assertEqual(kyimyl_atooch2.make(), form)
+        for word, expected_form in data.items():
+            kyimyl_atooch2 = KyimylAtooch2(KyrgyzWord(word))
+            self.assertEqual(kyimyl_atooch2.make(), expected_form)
 
     def get_data(self):
         return {

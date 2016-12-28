@@ -6,12 +6,11 @@ from kg_lang.tests import KGTestCase
 
 class JondomoTest(KGTestCase):
     def test_ilik(self):
-
         data = self.get_ilik_data()
 
-        for word, form in data.items():
-            atooch = Jondomo(KyrgyzWord(word, False))
-            self.assertEqual(atooch.ilik(), form)
+        for word, expected_form in data.items():
+            jondomo_affix = Jondomo(KyrgyzWord(word))
+            self.assertEqual(jondomo_affix.ilik(), expected_form)
 
     def get_ilik_data(self):
         return {
@@ -32,12 +31,11 @@ class JondomoTest(KGTestCase):
         }
 
     def test_barysh(self):
-
         data = self.get_barysh_data()
 
-        for word, form in data.items():
-            atooch = Jondomo(KyrgyzWord(word, False))
-            self.assertEqual(atooch.barysh(), form)
+        for word, expected_form in data.items():
+            jondomo_affix = Jondomo(KyrgyzWord(word))
+            self.assertEqual(jondomo_affix.barysh(), expected_form)
 
     def get_barysh_data(self):
         return {
@@ -58,12 +56,11 @@ class JondomoTest(KGTestCase):
         }
 
     def test_tabysh(self):
-
         data = self.get_tabysh_data()
 
-        for word, form in data.items():
-            atooch = Jondomo(KyrgyzWord(word, False))
-            self.assertEqual(atooch.tabysh(), form)
+        for word, expected_form in data.items():
+            jondomo_affix = Jondomo(KyrgyzWord(word))
+            self.assertEqual(jondomo_affix.tabysh(), expected_form)
 
     def get_tabysh_data(self):
         return {
@@ -84,12 +81,11 @@ class JondomoTest(KGTestCase):
         }
 
     def test_jatysh(self):
-
         data = self.get_jatysh_data()
 
-        for word, form in data.items():
-            atooch = Jondomo(KyrgyzWord(word, False))
-            self.assertEqual(atooch.jatysh(), form)
+        for word, expected_form in data.items():
+            jondomo_affix = Jondomo(KyrgyzWord(word))
+            self.assertEqual(jondomo_affix.jatysh(), expected_form)
 
     def get_jatysh_data(self):
         return {
@@ -110,12 +106,11 @@ class JondomoTest(KGTestCase):
         }
 
     def test_chygysh(self):
-
         data = self.get_chygysh_data()
 
-        for word, form in data.items():
-            atooch = Jondomo(KyrgyzWord(word, False))
-            self.assertEqual(unicode(atooch.chygysh()), form)
+        for word, expected_form in data.items():
+            jondomo_affix = Jondomo(KyrgyzWord(word))
+            self.assertEqual(unicode(jondomo_affix.chygysh()), expected_form)
 
     def get_chygysh_data(self):
         return {

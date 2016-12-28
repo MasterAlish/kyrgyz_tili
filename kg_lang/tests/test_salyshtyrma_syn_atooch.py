@@ -8,9 +8,9 @@ class SalyshtyrmaSynAtoochTest(KGTestCase):
     def test_1(self):
         data = self.get_data()
 
-        for word, form in data.items():
-            syn_atooch = SalyshtyrmaSynAtooch(KyrgyzWord(word, False))
-            self.assertEqual(syn_atooch.make(), form)
+        for word, expected_form in data.items():
+            syn_atooch = SalyshtyrmaSynAtooch(KyrgyzWord(word))
+            self.assertEqual(syn_atooch.make(), expected_form)
 
     def get_data(self):
         return {

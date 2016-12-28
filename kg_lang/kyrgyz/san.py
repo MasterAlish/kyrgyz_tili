@@ -1,12 +1,11 @@
 # coding=utf-8
-from kg_lang.kyrgyz.feature import Feature
-from kg_lang.kyrgyz.helps.change import WordChange
+from kg_lang.kyrgyz.affix import Affix
 from kg_lang.kyrgyz.lang import WordEndingTypes
 from types import LambdaType
 
 
-class San(Feature):
-    illegal_prev_features = ['taandyk']
+class San(Affix):
+    illegal_prev_affixes = ['taandyk']
 
     def __init__(self, word_object):
         """:type word_object: kg_lang.kyrgyz.lang.KyrgyzWord """
@@ -14,11 +13,11 @@ class San(Feature):
         self.word_object.prepare()
 
     def transformers(self):
-        if self.word_object.last_feature() in self.illegal_prev_features:
+        if self.word_object.last_affix() in self.illegal_prev_affixes:
             return []
         return [San.koptuk]
 
-    mucho = {
+    mucho = {  # TODO: поменять на матрицу без индексов, как в других аффиксах
         WordEndingTypes.UNSUZ_JOK: {
             WordEndingTypes.UNDUU_JOON_ERINSIZ: u"лар",
             WordEndingTypes.UNDUU_ICHKE_ERINSIZ: u"лер",
@@ -46,7 +45,7 @@ class San(Feature):
     }
 
     def koptuk(self):
-        if self.word_object.last_feature() in self.illegal_prev_features:
+        if self.word_object.last_affix() in self.illegal_prev_affixes:
             return self.word_object
         if self.is_special_word():
             try:
@@ -67,8 +66,17 @@ class San(Feature):
         return not self.word_object.is_name and self.word_object.word in special_words
 
     def special_conversion(self):
-        special_conversions = {u'бала': (u'балдар', 3), u'мен': (u'биз', 0), u'сен': (u'силер', 2), u'ал': (u'алар', 1),
-                               u'ол': (u'олор', 1), u'биз': (u'биз', 0), u'силер': (u'силер', 2),
-                               u'сиздер': (u'сиздер', 3), u'алар': (u'алар', 1), u'бул': (u'булар', 2),
-                               u'булар': (u'булар', 2), u'ушул': (u'ушулар', 3), u'ушулар': (u'ушулар', 3)}
+        special_conversions = {u'бала': (u'балдар', 3),
+                               u'мен': (u'биз', 0),
+                               u'сен': (u'силер', 2),
+                               u'ал': (u'алар', 1),
+                               u'ол': (u'олор', 1),
+                               u'биз': (u'биз', 0),
+                               u'силер': (u'силер', 2),
+                               u'сиздер': (u'сиздер', 3),
+                               u'алар': (u'алар', 1),
+                               u'бул': (u'булар', 2),
+                               u'булар': (u'булар', 2),
+                               u'ушул': (u'ушулар', 3),
+                               u'ушулар': (u'ушулар', 3)}
         return special_conversions[self.word_object.word]

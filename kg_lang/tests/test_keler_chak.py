@@ -1,27 +1,23 @@
 # coding=utf-8
-from kg_lang.kyrgyz.chak import UchurChak, KelerChak
+from kg_lang.kyrgyz.etish.chak import KelerChak
+from kg_lang.kyrgyz.helps.attrs import *
 from kg_lang.kyrgyz.lang import KyrgyzWord
 from kg_lang.tests import KGTestCase
 
-Jeke = True
-Sylyk = True
-Kop = False
-SylykEmes = False
+
+attrs_list = [men, sen, al, biz, siler, alar, siz, sizder]
 
 
 class KelerChakTest(KGTestCase):
     def test_1(self):
-        keys = [(1, Jeke, SylykEmes), (2, Jeke, SylykEmes), (3, Jeke, SylykEmes),
-                (1, Kop, SylykEmes), (2, Kop, SylykEmes), (3, Kop, SylykEmes),
-                (2, Jeke, Sylyk), (2, Kop, Sylyk)]
 
         data = self.get_data()
 
-        for word, forms in data.items():
-            chak = KelerChak(KyrgyzWord(word, False))
-            for i in range(len(keys)):
-                jak, san, sylyk = keys[i]
-                self.assertEqual(chak.make(jak, san, sylyk), forms[i])
+        for word, expected_forms in data.items():
+            chak = KelerChak(KyrgyzWord(word))
+            for i in range(len(attrs_list)):
+                attrs = attrs_list[i]
+                self.assertEqual(chak.make(attrs.jak, attrs.jeke, attrs.sylyk), expected_forms[i])
 
     def get_data(self):
         return {

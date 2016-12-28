@@ -1,10 +1,9 @@
 # coding=utf-8
-from kg_lang.kyrgyz.feature import Feature
+from kg_lang.kyrgyz.affix import Affix
 from kg_lang.kyrgyz.lang import select_for_attrs
-from kg_lang.kyrgyz.taandyk import Taandyk
 
 
-class Jondomo(Feature):
+class Jondomo(Affix):
     def __init__(self, word_object):
         self.word_object = word_object
         self.word_object.prepare()
@@ -55,9 +54,9 @@ class Jondomo(Feature):
                     pass
 
             if self.word_object.unsuz_end_type and self.word_object.unduu_type:
-                i_unsuz, i_unduu = Feature.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
+                i_unsuz, i_unduu = Affix.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
                 mucho = self.mucholor[i_unsuz][i_unduu]
-                if self.word_object.last_feature() == 'taandyk' and self.word_object.last_change_attrs():
+                if self.word_object.last_affix() == 'taandyk' and self.word_object.last_change_attrs():
                     attrs = self.word_object.last_change_attrs()
                     mucho = select_for_attrs(attrs.jak, attrs.jeke, attrs.sylyk, self.taandyk_sen, self.taandyk_sen,
                                              self.taandyk_al, self.taandyk_sen, self.taandyk_siler, self.taandyk_al,
@@ -78,7 +77,11 @@ class Jondomo(Feature):
             return not self.word_object.is_name and self.word_object.word in special_words
 
         def special_conversion(self):
-            special_conversions = {u'мен': u'менин', u'сен': u'сенин', u'ал': u'анын', u'ол': u'онун', u'бул': u'бунун',
+            special_conversions = {u'мен': u'менин',
+                                   u'сен': u'сенин',
+                                   u'ал': u'анын',
+                                   u'ол': u'онун',
+                                   u'бул': u'бунун',
                                    u'ушул': u'ушунун'}
             return special_conversions[self.word_object.word]
 
@@ -109,9 +112,9 @@ class Jondomo(Feature):
                     pass
 
             if self.word_object.unsuz_end_type and self.word_object.unduu_type:
-                i_unsuz, i_unduu = Feature.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
+                i_unsuz, i_unduu = Affix.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
                 mucho = self.mucholor[i_unsuz][i_unduu]
-                if self.word_object.last_feature() == 'taandyk' and self.word_object.last_change_attrs():
+                if self.word_object.last_affix() == 'taandyk' and self.word_object.last_change_attrs():
                     attrs = self.word_object.last_change_attrs()
                     mucho = select_for_attrs(attrs.jak, attrs.jeke, attrs.sylyk, self.taandyk_men, self.taandyk_men,
                                              self.taandyk_al, self.taandyk_biz, self.taandyk_siler, self.taandyk_al,
@@ -132,7 +135,11 @@ class Jondomo(Feature):
             return not self.word_object.is_name and self.word_object.word in special_words
 
         def special_conversion(self):
-            special_conversions = {u'мен': u'мага', u'сен': u'сага', u'ал': u'ага', u'ол': u'ого', u'бул': u'буга',
+            special_conversions = {u'мен': u'мага',
+                                   u'сен': u'сага',
+                                   u'ал': u'ага',
+                                   u'ол': u'ого',
+                                   u'бул': u'буга',
                                    u'ушул': u'ушуга'}
             return special_conversions[self.word_object.word]
 
@@ -155,9 +162,9 @@ class Jondomo(Feature):
                     pass
 
             if self.word_object.unsuz_end_type and self.word_object.unduu_type:
-                i_unsuz, i_unduu = Feature.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
+                i_unsuz, i_unduu = Affix.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
                 mucho = self.mucholor[i_unsuz][i_unduu]
-                if self.word_object.last_feature() == 'taandyk' and self.word_object.last_change_attrs():
+                if self.word_object.last_affix() == 'taandyk' and self.word_object.last_change_attrs():
                     if self.word_object.last_change_attrs().jak == 3:
                         mucho = self.taandyk_al
                 start_of_result = self.word_object.word + u""
@@ -170,7 +177,11 @@ class Jondomo(Feature):
             return not self.word_object.is_name and self.word_object.word in special_words
 
         def special_conversion(self):
-            special_conversions = {u'мен': u'мени', u'сен': u'сени', u'ал': u'аны', u'ол': u'ону', u'бул': u'буну',
+            special_conversions = {u'мен': u'мени',
+                                   u'сен': u'сени',
+                                   u'ал': u'аны',
+                                   u'ол': u'ону',
+                                   u'бул': u'буну',
                                    u'ушул': u'ушуну'}
             return special_conversions[self.word_object.word]
 
@@ -193,9 +204,9 @@ class Jondomo(Feature):
                     pass
 
             if self.word_object.unsuz_end_type and self.word_object.unduu_type:
-                i_unsuz, i_unduu = Feature.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
+                i_unsuz, i_unduu = Affix.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
                 mucho = self.mucholor[i_unsuz][i_unduu]
-                if self.word_object.last_feature() == 'taandyk' and self.word_object.last_change_attrs():
+                if self.word_object.last_affix() == 'taandyk' and self.word_object.last_change_attrs():
                     if self.word_object.last_change_attrs().jak == 3:
                         mucho = self.taandyk_al[i_unduu]
                 start_of_result = self.word_object.word + u""
@@ -213,7 +224,10 @@ class Jondomo(Feature):
             return not self.word_object.is_name and self.word_object.word in special_words
 
         def special_conversion(self):
-            special_conversions = {u'ал': u'анда', u'ол': u'ондо', u'бул': u'буда', u'ушул': u'ушуда'}
+            special_conversions = {u'ал': u'анда',
+                                   u'ол': u'ондо',
+                                   u'бул': u'буда',
+                                   u'ушул': u'ушуда'}
             return special_conversions[self.word_object.word]
 
     class Chygysh(object):
@@ -235,9 +249,9 @@ class Jondomo(Feature):
                     pass
 
             if self.word_object.unsuz_end_type and self.word_object.unduu_type:
-                i_unsuz, i_unduu = Feature.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
+                i_unsuz, i_unduu = Affix.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
                 mucho = self.mucholor[i_unsuz][i_unduu]
-                if self.word_object.last_feature() == 'taandyk' and self.word_object.last_change_attrs():
+                if self.word_object.last_affix() == 'taandyk' and self.word_object.last_change_attrs():
                     if self.word_object.last_change_attrs().jak == 3:
                         mucho = self.taandyk_al[i_unduu]
                 start_of_result = self.word_object.word + u""
@@ -255,6 +269,10 @@ class Jondomo(Feature):
             return not self.word_object.is_name and self.word_object.word in special_words
 
         def special_conversion(self):
-            special_conversions = {u'мен': u'менен', u'сен': u'сенен', u'ал': u'андан', u'ол': u'ондон',
-                                   u'бул': u'будан', u'ушул': u'ушудан'}
+            special_conversions = {u'мен': u'менен',
+                                   u'сен': u'сенен',
+                                   u'ал': u'андан',
+                                   u'ол': u'ондон',
+                                   u'бул': u'будан',
+                                   u'ушул': u'ушудан'}
             return special_conversions[self.word_object.word]

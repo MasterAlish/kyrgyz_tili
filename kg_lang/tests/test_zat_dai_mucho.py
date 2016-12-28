@@ -8,9 +8,9 @@ class ZatDaiMuchoTest(KGTestCase):
     def test_1(self):
         data = self.get_data()
 
-        for word, form in data.items():
-            atooch = DaiZatMuchosu(KyrgyzWord(word, False))
-            self.assertEqual(atooch.make(), form)
+        for word, expected_form in data.items():
+            affix = DaiZatMuchosu(KyrgyzWord(word))
+            self.assertEqual(affix.make(), expected_form)
 
     def get_data(self):
         return {

@@ -8,9 +8,9 @@ class EtishGanMuchoTest(KGTestCase):
     def test_1(self):
         data = self.get_data()
 
-        for word, form in data.items():
-            atooch = GanEtishMuchosu(KyrgyzWord(word, False))
-            self.assertEqual(atooch.make().word, form)
+        for word, expected_form in data.items():
+            affix = GanEtishMuchosu(KyrgyzWord(word))
+            self.assertEqual(affix.make().word, expected_form)
 
     def get_data(self):
         return {

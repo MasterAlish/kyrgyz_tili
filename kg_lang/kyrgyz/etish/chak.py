@@ -1,11 +1,11 @@
 # coding=utf-8
-from kg_lang.kyrgyz.feature import Feature
+from kg_lang.kyrgyz.affix import Affix
 from kg_lang.kyrgyz.helps.attrs import WordAttrs
 from kg_lang.kyrgyz.lang import select_for_attrs
 from kg_lang.kyrgyz.mucho import J, P, SpecialMucho
 
 
-class Chak(Feature):
+class Chak(Affix):
     def __init__(self, word_object):
         self.word_object = word_object
         self.word_object.prepare()

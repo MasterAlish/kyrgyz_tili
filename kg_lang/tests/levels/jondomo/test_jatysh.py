@@ -12,7 +12,23 @@ attrs_list = [men, sen, al, biz, siler, alar, siz, sizder]
 
 class JondomoJatyshAfterTaandykTest(KGTestCase):
     def test_jatysh_after_taandyk(self):
-        data = {
+        data = self.get_data()
+        for word, expected_forms in data.items():
+            koptuk = San(KyrgyzWord(word)).koptuk()
+            for i in range(len(attrs_list)):
+                attr = attrs_list[i]
+                jeke_form_expected = expected_forms[0][i]
+                taandyk = Taandyk(KyrgyzWord(word)).make(attr.jak, attr.jeke, attr.sylyk)
+                jondomo = Jondomo(taandyk)
+                self.assertEqual(jondomo.jatysh(), jeke_form_expected)
+
+                koptuk_form_expected = expected_forms[1][i]
+                taandyk_koptuk = Taandyk(koptuk).make(attr.jak, attr.jeke, attr.sylyk)
+                jondomo_koptuk = Jondomo(taandyk_koptuk)
+                self.assertEqual(jondomo_koptuk.jatysh(), koptuk_form_expected)
+
+    def get_data(self):
+        return {
             u'кит': [
                 [u'китимде', u'китиңде', u'китинде', u'китибизде', u'китиңерде', u'китинде', u'китиңизде', u'китиңиздерде', ],
                 [u'киттеримде', u'киттериңде', u'киттеринде', u'киттерибизде', u'киттериңерде', u'киттеринде', u'киттериңизде', u'киттериңиздерде', ]],
@@ -26,16 +42,3 @@ class JondomoJatyshAfterTaandykTest(KGTestCase):
                 [u'бөлөмдө', u'бөлөңдө', u'бөлөсүндө', u'бөлөбүздө', u'бөлөңөрдө', u'бөлөсүндө', u'бөлөңүздө', u'бөлөңүздөрдө', ],
                 [u'бөлөлөрүмдө', u'бөлөлөрүңдө', u'бөлөлөрүндө', u'бөлөлөрүбүздө', u'бөлөлөрүңөрдө', u'бөлөлөрүндө', u'бөлөлөрүңүздө', u'бөлөлөрүңүздөрдө', ]]
         }
-        for word, forms in data.items():
-            koptuk = San(KyrgyzWord(word)).koptuk()
-            for i in range(len(attrs_list)):
-                attr = attrs_list[i]
-                jeke_form = forms[0][i]
-                taandyk = Taandyk(KyrgyzWord(word)).make(attr.jak, attr.jeke, attr.sylyk)
-                jondomo = Jondomo(taandyk)
-                self.assertEqual(jondomo.jatysh(), jeke_form)
-
-                koptuk_form = forms[1][i]
-                taandyk_koptuk = Taandyk(koptuk).make(attr.jak, attr.jeke, attr.sylyk)
-                jondomo_koptuk = Jondomo(taandyk_koptuk)
-                self.assertEqual(jondomo_koptuk.jatysh(), koptuk_form)

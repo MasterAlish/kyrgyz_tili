@@ -1,5 +1,5 @@
 # coding=utf-8
-from kg_lang.kyrgyz.affixes import apply_affix
+from kg_lang.kyrgyz.affixing import apply_affix
 from kg_lang.kyrgyz.lang import KyrgyzWord
 from kg_lang.tests import KGTestCase
 

@@ -16,7 +16,7 @@ class WordEndingTypes(object):
     UNDUU_ICHKE_ERINDUU ="U_OU"
 
 
-class KyrgyzWord():
+class KyrgyzWord:
     ALPHABET = u"абвгдеёжзийклмнңоөпрстуүфхцчшщьыъэюя"
     ALPHABET_CAPS = u"АБВГДЕЁЖЗИЙКЛМНҢОӨПРСТУҮФХЦЧШЩЬЫЪЭЮЯ"
     EXTRA_ALLOWED_CHARS = u" -"
@@ -40,11 +40,14 @@ class KyrgyzWord():
 
     def _is_correct_word(self):
         for letter in self.word:
-            if letter not in self.ALPHABET and letter not in self.ALPHABET_CAPS and letter not in self.EXTRA_ALLOWED_CHARS:
+            if letter not in self.ALPHABET + self.ALPHABET_CAPS + self.EXTRA_ALLOWED_CHARS:
                 return False
         return True
 
     def prepare(self):
+        """
+        Подготовливает объект слова для дальнейших преобразований. Определяет его свойства.
+        """
         if self.prepared:
             return
 
@@ -105,10 +108,13 @@ class KyrgyzWord():
             return word[:-1]
         return word
 
-    def change(self, start, end, feature, attrs=None):
+    def change(self, start, end, affix, attrs=None):
+        """
+        Создает новый объект слова составленный из текущего с применением указанного аффикса
+        """
         new_word_object = KyrgyzWord(start+end, self.is_name)
         new_word_object.change_history.extend(self.change_history)
-        new_word_object.change_history.append(WordChange(feature, len(start), attrs))
+        new_word_object.change_history.append(WordChange(affix, len(start), attrs))
         return new_word_object
 
     def last_change_attrs(self):
@@ -117,8 +123,8 @@ class KyrgyzWord():
     def has_history(self):
         return len(self.change_history) > 0
 
-    def last_feature(self):
-        return self.change_history[-1].feature if len(self.change_history) > 0 else None
+    def last_affix(self):
+        return self.change_history[-1].affix if len(self.change_history) > 0 else None
 
 
 class Unduu(object):
