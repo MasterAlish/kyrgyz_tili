@@ -1,5 +1,5 @@
-# coding=utf-8
 from kg.lang.lang import Unduu, Unsuz
+
 """
 SpecialMucho - это такой суффикс, при применении которого начальная часть слова меняется.
     Обычно в кыргызском языке суффиксы просто прибавляется в конец слова.
@@ -27,10 +27,10 @@ class J(SpecialMucho):
 
     def make(self, word):
         word, mucho = super(J, self).make(word)
-        if word[-1] == u'к':
-            return word[:-1] + u'г', mucho
-        if word[-1] == u'п':
-            return word[:-1] + u'б', mucho
+        if word[-1] == 'к':
+            return word[:-1] + 'г', mucho
+        if word[-1] == 'п':
+            return word[:-1] + 'б', mucho
         return word, mucho
 
     class Meta:
@@ -44,9 +44,9 @@ class L(SpecialMucho):
     def make(self, word):
         word, mucho = super(L, self).make(word)
         if isinstance(mucho, tuple):
-            if word[-1] == u'р':
+            if word[-1] == 'р':
                 mucho = mucho[0]
-            if word[-1] == u'й':
+            if word[-1] == 'й':
                 mucho = mucho[1]
         return word, mucho
 
@@ -63,10 +63,10 @@ class U(SpecialMucho):
     def make(self, word):
         word, mucho = super(U, self).make(word)
         if word[-1] in Unduu.all:
-            if len(word) == 2 or word[-3] == u" ":
-                return word, u"ш"
+            if len(word) == 2 or word[-3] == " ":
+                return word, "ш"
             if word[-2] in Unduu.all:
-                return word, u"ш"
+                return word, "ш"
             return word[:-1], mucho
         return word, mucho
 
@@ -80,7 +80,7 @@ class P(SpecialMucho):
 
     def make(self, word):
         word, mucho = super(P, self).make(word)
-        if (word[-1] == u'п' or word[-1] == u'б') and word[-2] in Unduu.all:
+        if (word[-1] == 'п' or word[-1] == 'б') and word[-2] in Unduu.all:
             if isinstance(mucho, tuple):
                 return word[:-2] + Unduu.sozulgandar[word[-2]], (self.cut_if_starts_with_unduu(mucho[0]),
                                                                  self.cut_if_starts_with_unduu(mucho[1]))
@@ -103,7 +103,7 @@ class K(SpecialMucho):
     def make(self, word):
         word, mucho = super(K, self).make(word)
         if word[-1] in Unsuz.katkalan:
-            return word, u'п' + mucho[1:]
+            return word, 'п' + mucho[1:]
         return word, mucho
 
     class Meta:

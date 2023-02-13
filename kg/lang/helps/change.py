@@ -1,4 +1,3 @@
-# coding=utf-8
 """
 WordChange - Одно изменение слова, которая составляет историю изменения слова
     affix = название аффикса, который был применен
@@ -13,8 +12,5 @@ class WordChange(object):
         self.attrs = attrs
         self.index = index
 
-    def __unicode__(self):
-        return u"%s %s" % (unicode(self.affix), (u"("+unicode(self.attrs)+u")" if self.attrs else u""))
-
     def __str__(self):
-        return self.__unicode__()
+        return "%s %s" % (self.affix, ("("+self.attrs+")" if self.attrs else ""))

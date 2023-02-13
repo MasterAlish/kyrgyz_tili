@@ -1,4 +1,3 @@
-# coding=utf-8
 from kg.lang.lang import KyrgyzWord
 from kg.lang.suroo._by import ByZatMuchosu
 from kg.tests import KGTestCase
@@ -14,14 +13,14 @@ class ByMuchosuTest(KGTestCase):
 
     def get_data(self):
         return {
-            u'мисал': u'мисалбы',
-            u'каз': u'казбы',
-            u'кий': u'кийби',
-            u'кыл': u'кылбы',
-            u'китеп': u'китеппи',
-            u'торт': u'тортпу',
-            u'уй': u'уйбу',
-            u'көрө': u'көрөбү',
-            u'теше': u'тешеби',
-            u'кийиз': u'кийизби',
+            'мисал': 'мисалбы',
+            'каз': 'казбы',
+            'кий': 'кийби',
+            'кыл': 'кылбы',
+            'китеп': 'китеппи',
+            'торт': 'тортпу',
+            'уй': 'уйбу',
+            'көрө': 'көрөбү',
+            'теше': 'тешеби',
+            'кийиз': 'кийизби',
         }

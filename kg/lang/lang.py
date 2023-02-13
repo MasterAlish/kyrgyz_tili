@@ -1,4 +1,3 @@
-# coding=utf-8
 import re
 
 from kg.lang.helps.change import WordChange
@@ -10,16 +9,16 @@ class WordEndingTypes(object):
     UNSUZ_JUMSHAK_UYAN = "UJU"
     UNSUZ_UYAN_RYI = "URYI"
 
-    UNDUU_JOON_ERINSIZ ="UAY"
-    UNDUU_JOON_ERINDUU ="UOU"
-    UNDUU_ICHKE_ERINSIZ ="UEI"
-    UNDUU_ICHKE_ERINDUU ="U_OU"
+    UNDUU_JOON_ERINSIZ = "UAY"
+    UNDUU_JOON_ERINDUU = "UOU"
+    UNDUU_ICHKE_ERINSIZ = "UEI"
+    UNDUU_ICHKE_ERINDUU = "U_OU"
 
 
 class KyrgyzWord:
-    ALPHABET = u"абвгдеёжзийклмнңоөпрстуүфхцчшщьыъэюя"
-    ALPHABET_CAPS = u"АБВГДЕЁЖЗИЙКЛМНҢОӨПРСТУҮФХЦЧШЩЬЫЪЭЮЯ"
-    EXTRA_ALLOWED_CHARS = u" -"
+    ALPHABET = "абвгдеёжзийклмнңоөпрстуүфхцчшщьыъэюя"
+    ALPHABET_CAPS = "АБВГДЕЁЖЗИЙКЛМНҢОӨПРСТУҮФХЦЧШЩЬЫЪЭЮЯ"
+    EXTRA_ALLOWED_CHARS = " -"
 
     def __init__(self, word, is_name=False):
         self.initial_word = word.strip()
@@ -32,11 +31,15 @@ class KyrgyzWord:
         self.unsuz_end_type = None
         self.change_history = []
 
-    def __unicode__(self):
+    def __str__(self):
         return self.word
 
-    def __str__(self):
-        return self.word.encode("utf-8")
+    def __eq__(self, other):
+        if isinstance(other, str):
+            return self.word == other
+        if isinstance(other, KyrgyzWord):
+            return self.word == other.word
+        return super().__eq__(other)
 
     def _is_correct_word(self):
         for letter in self.word:
@@ -51,17 +54,17 @@ class KyrgyzWord:
         if self.prepared:
             return
 
-        ayagynda_belgi = re.compile(u"[%s]$" % Ashykcha.belgiler)
+        ayagynda_belgi = re.compile("[%s]$" % Ashykcha.belgiler)
 
         if ayagynda_belgi.findall(self.word):
             self.original_word = self.word
             self.word = self.word[0:-1]
 
-        ayagynda_yottoshkon = re.compile(u"[%s]$" % Ashykcha.yottoshkon)
-        ayagynda_unduu = re.compile(u"[%s]$" % Unduu.all)
-        ayagynda_jumshak_uyan_unsuz = re.compile(u"[%s]$" % (Unsuz.jumshak+Unsuz.uyan))
-        ayagynda_uyan_ryi_unsuz = re.compile(u"[%s]$" % Unsuz.uyan_ryi)
-        ayagynda_katkalan_unsuz = re.compile(u"[%s]$" % Unsuz.katkalan)
+        ayagynda_yottoshkon = re.compile("[%s]$" % Ashykcha.yottoshkon)
+        ayagynda_unduu = re.compile("[%s]$" % Unduu.all)
+        ayagynda_jumshak_uyan_unsuz = re.compile("[%s]$" % (Unsuz.jumshak + Unsuz.uyan))
+        ayagynda_uyan_ryi_unsuz = re.compile("[%s]$" % Unsuz.uyan_ryi)
+        ayagynda_katkalan_unsuz = re.compile("[%s]$" % Unsuz.katkalan)
 
         if ayagynda_yottoshkon.findall(self.word):
             self.unsuz_end_type = WordEndingTypes.UNSUZ_JOK
@@ -74,10 +77,10 @@ class KyrgyzWord:
         elif ayagynda_katkalan_unsuz.findall(self.word):
             self.unsuz_end_type = WordEndingTypes.UNSUZ_KATKALAN
 
-        joon_erinsiz_unduu = re.compile(u"[%s][^%s]*$" % (Unduu.ay, Unduu.ay_dan_bashka))
-        ichke_erinsiz_unduu = re.compile(u"[%s][^%s]*$" % (Unduu.ei, Unduu.ei_den_bashka))
-        joon_erinduu_unduu = re.compile(u"[%s][^%s]*$" % (Unduu.ou, Unduu.ou_dan_bashka))
-        ichke_erinduu_unduu = re.compile(u"[%s][^%s]*$" % (Unduu._ou, Unduu._ou_don_bashka))
+        joon_erinsiz_unduu = re.compile("[%s][^%s]*$" % (Unduu.ay, Unduu.ay_dan_bashka))
+        ichke_erinsiz_unduu = re.compile("[%s][^%s]*$" % (Unduu.ei, Unduu.ei_den_bashka))
+        joon_erinduu_unduu = re.compile("[%s][^%s]*$" % (Unduu.ou, Unduu.ou_dan_bashka))
+        ichke_erinduu_unduu = re.compile("[%s][^%s]*$" % (Unduu._ou, Unduu._ou_don_bashka))
 
         if joon_erinsiz_unduu.findall(self.word):
             self.unduu_type = WordEndingTypes.UNDUU_JOON_ERINSIZ
@@ -88,7 +91,7 @@ class KyrgyzWord:
         elif ichke_erinduu_unduu.findall(self.word):
             self.unduu_type = WordEndingTypes.UNDUU_ICHKE_ERINDUU
 
-        jaaktuu = re.compile(u"[%s][^%s]*$" % (Unduu.jaaktuu, Unduu.jaaksyz))
+        jaaktuu = re.compile("[%s][^%s]*$" % (Unduu.jaaktuu, Unduu.jaaksyz))
 
         if jaaktuu.findall(self.word):
             self.unduu_type_jaaktuu = True
@@ -96,7 +99,7 @@ class KyrgyzWord:
         self.prepared = True
 
     def _make_lower(self, word):
-        lower = u"%s" % word
+        lower = "%s" % word
         for letter in word:
             if letter in self.ALPHABET_CAPS:
                 index = self.ALPHABET_CAPS.index(letter)
@@ -112,7 +115,7 @@ class KyrgyzWord:
         """
         Создает новый объект слова составленный из текущего с применением указанного аффикса
         """
-        new_word_object = KyrgyzWord(start+end, self.is_name)
+        new_word_object = KyrgyzWord(start + end, self.is_name)
         new_word_object.change_history.extend(self.change_history)
         new_word_object.change_history.append(WordChange(affix, len(start), attrs))
         return new_word_object
@@ -128,48 +131,48 @@ class KyrgyzWord:
 
 
 class Unduu(object):
-    all = u"аоуыэеиөү"
-    joon = u"аоуы"
-    ichke = u"иэеөү"
-    erinduu = u"оуөү"
-    erinsiz = u"аэеыи"
-    jaaktuu = u"аоөэеяё"
-    jaaksyz = u"уүыию"
+    all = "аоуыэеиөү"
+    joon = "аоуы"
+    ichke = "иэеөү"
+    erinduu = "оуөү"
+    erinsiz = "аэеыи"
+    jaaktuu = "аоөэеяё"
+    jaaksyz = "уүыию"
 
-    ay = u"аыя"
-    ei = u"эеи"
-    ou = u"оуёю"
-    _ou = u"өү"
+    ay = "аыя"
+    ei = "эеи"
+    ou = "оуёю"
+    _ou = "өү"
 
-    ay_dan_bashka = u"оуэеиөүёю"
-    ei_den_bashka = u"аоуыөүяю"
-    ou_dan_bashka = u"аыэеиөүя"
-    _ou_don_bashka = u"аоуыэеияё"
+    ay_dan_bashka = "оуэеиөүёю"
+    ei_den_bashka = "аоуыөүяю"
+    ou_dan_bashka = "аыэеиөүя"
+    _ou_don_bashka = "аоуыэеияё"
 
     sozulgandar = {
-        u'а': u'аа',
-        u'о': u'оо',
-        u'у': u'уу',
-        u'ы': u'ыы',
-        u'э': u'ээ',
-        u'е': u'ээ',
-        u'ө': u'өө',
-        u'ү': u'үү',
-        u'и': u'ии',
+        'а': 'аа',
+        'о': 'оо',
+        'у': 'уу',
+        'ы': 'ыы',
+        'э': 'ээ',
+        'е': 'ээ',
+        'ө': 'өө',
+        'ү': 'үү',
+        'и': 'ии',
     }
 
 
 class Unsuz(object):
-    all = u"цкшщхфпрчстйнгзвлджмбң"
-    katkalan = u"цкшщхфпчст"
-    jumshak = u"гзвджмб"
-    uyan = u"мнңл"
-    uyan_ryi = u"рй"
+    all = "цкшщхфпрчстйнгзвлджмбң"
+    katkalan = "цкшщхфпчст"
+    jumshak = "гзвджмб"
+    uyan = "мнңл"
+    uyan_ryi = "рй"
 
 
 class Ashykcha(object):
-    yottoshkon = u'ёяю'
-    belgiler = u'ъь'
+    yottoshkon = 'ёяю'
+    belgiler = 'ъь'
 
 
 def select_for_attrs(jak, jeke, sylyk, men, sen, al, biz, siler, alar, siz, sizder):

@@ -1,4 +1,3 @@
-# coding=utf-8
 from kg.lang.affix import Affix
 from kg.lang.helps.attrs import WordAttrs
 from kg.lang.lang import select_for_attrs
@@ -17,73 +16,73 @@ class Chak(Affix):
         return self.word_object.word
 
     def change_yottoshkon_tamga(self, end_of_result, start_of_result):
-        if start_of_result[-1] == u'й' and end_of_result[0] == u'е':
+        if start_of_result[-1] == 'й' and end_of_result[0] == 'е':
             return start_of_result[:-1], end_of_result
-        elif start_of_result[-1] == u'й' and end_of_result[0] == u'а':
-            return start_of_result[:-1] + u'я', end_of_result[1:]
-        elif start_of_result[-1] == u'й' and end_of_result[0] == u'о':
-            return start_of_result[:-1] + u'ё', end_of_result[1:]
-        elif start_of_result[-1] == u'й' and end_of_result[0] == u'у':
-            return start_of_result[:-1] + u'ю', end_of_result[1:]
+        elif start_of_result[-1] == 'й' and end_of_result[0] == 'а':
+            return start_of_result[:-1] + 'я', end_of_result[1:]
+        elif start_of_result[-1] == 'й' and end_of_result[0] == 'о':
+            return start_of_result[:-1] + 'ё', end_of_result[1:]
+        elif start_of_result[-1] == 'й' and end_of_result[0] == 'у':
+            return start_of_result[:-1] + 'ю', end_of_result[1:]
         return start_of_result, end_of_result
 
 
 class OtkonChak(Chak):
 
     men = [
-        [u"дым", u"дум", u"дим", u"дүм"],
-        [u"дым", u"дум", u"дим", u"дүм"],
-        [u"дым", u"дум", u"дим", u"дүм"],
-        [u"тым", u"тум", u"тим", u"түм"]
+        ["дым", "дум", "дим", "дүм"],
+        ["дым", "дум", "дим", "дүм"],
+        ["дым", "дум", "дим", "дүм"],
+        ["тым", "тум", "тим", "түм"]
     ]
 
     biz = [
-        [u"дык", u"дук", u"дик", u"дүк"],
-        [u"дык", u"дук", u"дик", u"дүк"],
-        [u"дык", u"дук", u"дик", u"дүк"],
-        [u"тык", u"тук", u"тик", u"түк"]
+        ["дык", "дук", "дик", "дүк"],
+        ["дык", "дук", "дик", "дүк"],
+        ["дык", "дук", "дик", "дүк"],
+        ["тык", "тук", "тик", "түк"]
     ]
 
     sen = [
-        [u"дың", u"дуң", u"диң", u"дүң"],
-        [u"дың", u"дуң", u"диң", u"дүv"],
-        [u"дың", u"дуң", u"диң", u"дүң"],
-        [u"тың", u"туң", u"тиң", u"түң"]
+        ["дың", "дуң", "диң", "дүң"],
+        ["дың", "дуң", "диң", "дүv"],
+        ["дың", "дуң", "диң", "дүң"],
+        ["тың", "туң", "тиң", "түң"]
     ]
 
     siler = [
-        [u"дыңар", u"дуңар", u"диңер", u"дүңөр"],
-        [u"дыңар", u"дуңар", u"диңер", u"дүңөр"],
-        [u"дыңар", u"дуңар", u"диңер", u"дүңөр"],
-        [u"тыңар", u"туңар", u"тиңер", u"түңөр"],
+        ["дыңар", "дуңар", "диңер", "дүңөр"],
+        ["дыңар", "дуңар", "диңер", "дүңөр"],
+        ["дыңар", "дуңар", "диңер", "дүңөр"],
+        ["тыңар", "туңар", "тиңер", "түңөр"],
     ]
 
     siz = [
-        [u"дыңыз", u"дуңуз", u"диңиз", u"дүңүз"],
-        [u"дыңыз", u"дуңуз", u"диңиз", u"дүңүз"],
-        [u"дыңыз", u"дуңуз", u"диңиз", u"дүңүз"],
-        [u"тыңыз", u"туңуз", u"тиңиз", u"түңүз"],
+        ["дыңыз", "дуңуз", "диңиз", "дүңүз"],
+        ["дыңыз", "дуңуз", "диңиз", "дүңүз"],
+        ["дыңыз", "дуңуз", "диңиз", "дүңүз"],
+        ["тыңыз", "туңуз", "тиңиз", "түңүз"],
     ]
 
     sizder = [
-        [u"дыңыздар", u"дуңуздар", u"диңиздер", u"дүңүздөр"],
-        [u"дыңыздар", u"дуңуздар", u"диңиздер", u"дүңүздөр"],
-        [u"дыңыздар", u"дуңуздар", u"диңиздер", u"дүңүздөр"],
-        [u"тыңыздар", u"туңуздар", u"тиңиздер", u"түңүздөр"],
+        ["дыңыздар", "дуңуздар", "диңиздер", "дүңүздөр"],
+        ["дыңыздар", "дуңуздар", "диңиздер", "дүңүздөр"],
+        ["дыңыздар", "дуңуздар", "диңиздер", "дүңүздөр"],
+        ["тыңыздар", "туңуздар", "тиңиздер", "түңүздөр"],
     ]
 
     al = [
-        [u"ды", u"ду", u"ди", u"дү"],
-        [u"ды", u"ду", u"ди", u"дү"],
-        [u"ды", u"ду", u"ди", u"дү"],
-        [u"ты", u"ту", u"ти", u"тү"]
+        ["ды", "ду", "ди", "дү"],
+        ["ды", "ду", "ди", "дү"],
+        ["ды", "ду", "ди", "дү"],
+        ["ты", "ту", "ти", "тү"]
     ]
 
     alar = [
-        [u"шты", u"шту", u"шти", u"штү"],
-        [J(u"ышты"), J(u"ушту"), J(u"ишти"), J(u"үштү")],
-        [J(u"ышты"), J(u"ушту"), J(u"ишти"), J(u"үштү")],
-        [J(u"ышты"), J(u"ушту"), J(u"ишти"), J(u"үштү")],
+        ["шты", "шту", "шти", "штү"],
+        [J("ышты"), J("ушту"), J("ишти"), J("үштү")],
+        [J("ышты"), J("ушту"), J("ишти"), J("үштү")],
+        [J("ышты"), J("ушту"), J("ишти"), J("үштү")],
     ]
 
     def make(self, jak=1, jeke=True, sylyk=False):
@@ -92,7 +91,7 @@ class OtkonChak(Chak):
             mucholor = select_for_attrs(jak, jeke, sylyk, self.men, self.sen, self.al, self.biz, self.siler, self.alar,
                                         self.siz, self.sizder)
             mucho = mucholor[index_i][index_j]
-            start_of_result = self.word_object.word + u""
+            start_of_result = self.word_object.word + ""
             end_of_result = mucho
             if isinstance(end_of_result, SpecialMucho):
                 start_of_result, end_of_result = end_of_result.make(self.word_object.word)
@@ -110,18 +109,18 @@ class UchurChak(Chak):
         return [UchurChak.uchur_base_form]
 
     mucholor = [
-        [u"п", u"п", u"п", u"п"],
-        [P(J(u"ып")), P(J(u"уп")), P(J(u"ип")), P(J(u"үп"))],
-        [P(J(u"ып")), P(J(u"уп")), P(J(u"ип")), P(J(u"үп"))],
-        [P(J(u"ып")), P(J(u"уп")), P(J(u"ип")), P(J(u"үп"))],
+        ["п", "п", "п", "п"],
+        [P(J("ып")), P(J("уп")), P(J("ип")), P(J("үп"))],
+        [P(J("ып")), P(J("уп")), P(J("ип")), P(J("үп"))],
+        [P(J("ып")), P(J("уп")), P(J("ип")), P(J("үп"))],
     ]
 
     def make(self, jak=1, jeke=True, sylyk=False):
         if self.word_object.unsuz_end_type and self.word_object.unduu_type:
-            jatuu = select_for_attrs(jak, jeke, sylyk, u"жатам", u"жатасың", u"жатат", u"жатабыз", u"жатасыңар",
-                                     u"жатышат", u"жатасыз", u"жатасыздар")
+            jatuu = select_for_attrs(jak, jeke, sylyk, "жатам", "жатасың", "жатат", "жатабыз", "жатасыңар",
+                                     "жатышат", "жатасыз", "жатасыздар")
             new_form = self.uchur_base_form(WordAttrs(jak, jeke, sylyk))
-            new_form.word += u" " + jatuu
+            new_form.word += " " + jatuu
             return new_form
         return self.word_object
 
@@ -129,7 +128,7 @@ class UchurChak(Chak):
         if self.word_object.unsuz_end_type and self.word_object.unduu_type:
             index_i, index_j = self.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
             mucho = self.mucholor[index_i][index_j]
-            start_of_result = self.word_object.word + u""
+            start_of_result = self.word_object.word + ""
             end_of_result = mucho
             if isinstance(end_of_result, SpecialMucho):
                 start_of_result, end_of_result = end_of_result.make(self.word_object.word)
@@ -141,59 +140,59 @@ class UchurChak(Chak):
 class KelerChak(Chak):
 
     men = [
-        [u"йм", u"йм", u"йм", u"йм"],
-        [J(u"ам"), J((u"ом", u"ам")), J(u"ем"), J(u"өм")],
-        [J(u"ам"), J((u"ом", u"ам")), J(u"ем"), J(u"өм")],
-        [J(u"ам"), J((u"ом", u"ам")), J(u"ем"), J(u"өм")],
+        ["йм", "йм", "йм", "йм"],
+        [J("ам"), J(("ом", "ам")), J("ем"), J("өм")],
+        [J("ам"), J(("ом", "ам")), J("ем"), J("өм")],
+        [J("ам"), J(("ом", "ам")), J("ем"), J("өм")],
     ]
 
     biz = [
-        [u"йбыз", u"йбуз", u"йбиз", u"йбүз"],
-        [J(u"абыз"), J((u"обуз", u"абыз")), J(u"ебиз"), J(u"өбүз")],
-        [J(u"абыз"), J((u"обуз", u"абыз")), J(u"ебиз"), J(u"өбүз")],
-        [J(u"абыз"), J((u"обуз", u"абыз")), J(u"ебиз"), J(u"өбүз")],
+        ["йбыз", "йбуз", "йбиз", "йбүз"],
+        [J("абыз"), J(("обуз", "абыз")), J("ебиз"), J("өбүз")],
+        [J("абыз"), J(("обуз", "абыз")), J("ебиз"), J("өбүз")],
+        [J("абыз"), J(("обуз", "абыз")), J("ебиз"), J("өбүз")],
     ]
 
     sen = [
-        [u"йсың", u"йсуң", u"йсиң", u"йсүң"],
-        [J(u"асың"), J((u"осуң", u"асың")), J(u"есиң"), J(u"өсүң")],
-        [J(u"асың"), J((u"осуң", u"асың")), J(u"есиң"), J(u"өсүң")],
-        [J(u"асың"), J((u"осуң", u"асың")), J(u"есиң"), J(u"өсүң")],
+        ["йсың", "йсуң", "йсиң", "йсүң"],
+        [J("асың"), J(("осуң", "асың")), J("есиң"), J("өсүң")],
+        [J("асың"), J(("осуң", "асың")), J("есиң"), J("өсүң")],
+        [J("асың"), J(("осуң", "асың")), J("есиң"), J("өсүң")],
     ]
 
     siler = [
-        [u"йсыңар", u"йсуңар", u"йсиңер", u"йсүңөр"],
-        [J(u"асыңар"), J((u"осуңар", u"асыңар")), J(u"есиңер"), J(u"өсүңөр")],
-        [J(u"асыңар"), J((u"осуңар", u"асыңар")), J(u"есиңер"), J(u"өсүңөр")],
-        [J(u"асыңар"), J((u"осуңар", u"асыңар")), J(u"есиңер"), J(u"өсүңөр")],
+        ["йсыңар", "йсуңар", "йсиңер", "йсүңөр"],
+        [J("асыңар"), J(("осуңар", "асыңар")), J("есиңер"), J("өсүңөр")],
+        [J("асыңар"), J(("осуңар", "асыңар")), J("есиңер"), J("өсүңөр")],
+        [J("асыңар"), J(("осуңар", "асыңар")), J("есиңер"), J("өсүңөр")],
     ]
 
     siz = [
-        [u"йсыз", u"йсуз", u"йсиз", u"йсүз"],
-        [J(u"асыз"), J((u"осуз", u"асыз")), J(u"есиз"), J(u"өсүз")],
-        [J(u"асыз"), J((u"осуз", u"асыз")), J(u"есиз"), J(u"өсүз")],
-        [J(u"асыз"), J((u"осуз", u"асыз")), J(u"есиз"), J(u"өсүз")],
+        ["йсыз", "йсуз", "йсиз", "йсүз"],
+        [J("асыз"), J(("осуз", "асыз")), J("есиз"), J("өсүз")],
+        [J("асыз"), J(("осуз", "асыз")), J("есиз"), J("өсүз")],
+        [J("асыз"), J(("осуз", "асыз")), J("есиз"), J("өсүз")],
     ]
 
     sizder = [
-        [u"йсыздар", u"йсуздар", u"йсиздер", u"йсүздөр"],
-        [J(u"асыздар"), J((u"осуздар", u"асыздар")), J(u"есиздер"), J(u"өсүздөр")],
-        [J(u"асыздар"), J((u"осуздар", u"асыздар")), J(u"есиздер"), J(u"өсүздөр")],
-        [J(u"асыздар"), J((u"осуздар", u"асыздар")), J(u"есиздер"), J(u"өсүздөр")],
+        ["йсыздар", "йсуздар", "йсиздер", "йсүздөр"],
+        [J("асыздар"), J(("осуздар", "асыздар")), J("есиздер"), J("өсүздөр")],
+        [J("асыздар"), J(("осуздар", "асыздар")), J("есиздер"), J("өсүздөр")],
+        [J("асыздар"), J(("осуздар", "асыздар")), J("есиздер"), J("өсүздөр")],
     ]
 
     al = [
-        [u"йт", u"йт", u"йт", u"йт"],
-        [J(u"ат"), J((u"от", u"ат")), J(u"ет"), J(u"өт")],
-        [J(u"ат"), J((u"от", u"ат")), J(u"ет"), J(u"өт")],
-        [J(u"ат"), J((u"от", u"ат")), J(u"ет"), J(u"өт")],
+        ["йт", "йт", "йт", "йт"],
+        [J("ат"), J(("от", "ат")), J("ет"), J("өт")],
+        [J("ат"), J(("от", "ат")), J("ет"), J("өт")],
+        [J("ат"), J(("от", "ат")), J("ет"), J("өт")],
     ]
 
     alar = [
-        [u"шат", (u"шот", u"шат"), u"шет", u"шөт"],
-        [J(u"ышат"), J(u"ушат"), J(u"ишет"), J(u"үшөт")],
-        [J(u"ышат"), J(u"ушат"), J(u"ишет"), J(u"үшөт")],
-        [J(u"ышат"), J(u"ушат"), J(u"ишет"), J(u"үшөт")],
+        ["шат", ("шот", "шат"), "шет", "шөт"],
+        [J("ышат"), J("ушат"), J("ишет"), J("үшөт")],
+        [J("ышат"), J("ушат"), J("ишет"), J("үшөт")],
+        [J("ышат"), J("ушат"), J("ишет"), J("үшөт")],
     ]
 
     def make(self, jak=1, jeke=True, sylyk=False):
@@ -203,7 +202,7 @@ class KelerChak(Chak):
                                         self.siz, self.sizder)
 
             mucho = mucholor[index_i][index_j]
-            start_of_result = self.word_object.word + u""
+            start_of_result = self.word_object.word + ""
             end_of_result = mucho
             if isinstance(end_of_result, SpecialMucho):
                 start_of_result, end_of_result = end_of_result.make(self.word_object.word)

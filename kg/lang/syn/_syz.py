@@ -1,4 +1,3 @@
-# coding=utf-8
 from kg.lang.affix import Affix
 
 
@@ -11,10 +10,10 @@ class SyzZatMuchosu(Affix):
         return [SyzZatMuchosu.make]
 
     mucholor = [
-        [u"сыз", u"суз", u"сиз", u"сүз"],
-        [u"сыз", u"суз", u"сиз", u"сүз"],
-        [u"сыз", u"суз", u"сиз", u"сүз"],
-        [u"сыз", u"суз", u"сиз", u"сүз"],
+        ["сыз", "суз", "сиз", "сүз"],
+        ["сыз", "суз", "сиз", "сүз"],
+        ["сыз", "суз", "сиз", "сүз"],
+        ["сыз", "суз", "сиз", "сүз"],
     ]
 
     def make(self, jak=1, jeke=True, sylyk=False):

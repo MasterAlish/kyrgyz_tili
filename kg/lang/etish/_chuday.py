@@ -1,4 +1,3 @@
-# coding=utf-8
 from kg.lang.affix import Affix
 
 
@@ -11,17 +10,17 @@ class ChudayEtishMuchosu(Affix):
         return [ChudayEtishMuchosu.make]
 
     mucholor = [
-        [u"чудай", u"чудай", u"чүдөй", u"чүдөй"],
-        [u"чудай", u"чудай", u"чүдөй", u"чүдөй"],
-        [u"чудай", u"чудай", u"чүдөй", u"чүдөй"],
-        [u"чудай", u"чудай", u"чүдөй", u"чүдөй"]
+        ["чудай", "чудай", "чүдөй", "чүдөй"],
+        ["чудай", "чудай", "чүдөй", "чүдөй"],
+        ["чудай", "чудай", "чүдөй", "чүдөй"],
+        ["чудай", "чудай", "чүдөй", "чүдөй"]
     ]
 
     def make(self, jak=1, jeke=True, sylyk=False):
         if self.word_object.unsuz_end_type and self.word_object.unduu_type:
             index_i, index_j = self.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
             mucho = self.mucholor[index_i][index_j]
-            start_of_result = self.word_object.word + u""
+            start_of_result = self.word_object.word + ""
             end_of_result = mucho
             return start_of_result + end_of_result
         return self.word_object.word

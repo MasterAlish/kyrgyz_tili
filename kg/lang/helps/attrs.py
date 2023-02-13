@@ -1,4 +1,3 @@
-# coding=utf-8
 """
 WordAttrs - Структура хранящая свойства слова по трем измерениям:
     jak - лицо(1, 2, 3)
@@ -16,11 +15,8 @@ class WordAttrs(object):
     def as_args(self):
         return self.jak, self.jeke, self.sylyk
 
-    def __unicode__(self):
-        return u"%d жак %s %s" % (self.jak, u"жеке" if self.jeke else u'көп', u"сылык" if self.sylyk else u"")
-
     def __str__(self):
-        return self.__unicode__()
+        return "%d жак %s %s" % (self.jak, "жеке" if self.jeke else 'көп', "сылык" if self.sylyk else "")
 
 
 men = WordAttrs(1, True, False)  # я

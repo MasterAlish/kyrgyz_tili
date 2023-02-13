@@ -1,4 +1,3 @@
-# coding=utf-8
 from kg.lang.bashka._dagy import DagyZatMuchosu
 from kg.lang.etish._ba import BaEtishMuchosu
 from kg.lang.etish._bash import BashEtishMuchosu
@@ -29,7 +28,7 @@ TUURAMES_ETISH = 7  # Неправильный глагол какой-то (Я 
 SYRDYK = 8  # Междометие
 KYZMATCHY = 9  # Вспомогательные слова
 KYIMYL_ATOOCH = 10  # Существительное определяющее процесс действия(глагол + суффикс)
-TUURANDY = 11   # Подражательные слова
+TUURANDY = 11  # Подражательные слова
 
 
 # README: Affix - какое-либо доступное преобразование для слова или любая операция

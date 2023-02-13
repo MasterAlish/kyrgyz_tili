@@ -1,10 +1,10 @@
-# coding=utf-8
 from kg.db.models import Word
 from kg.lang.affixing import get_word_affixes, get_extra_word_affixes, apply_affix
 from kg.lang.lang import KyrgyzWord
 
 
-def generate(word=None):
+def generate(word: str = None):
+    result = []
     if word:
         found_words = Word.select().where(
             (Word.word == word.lower() + "-") |
@@ -12,18 +12,19 @@ def generate(word=None):
             (Word.alt == word.lower())
         )
         if found_words.count() == 0:
-            raise Exception((u'Мындай "%s" соз табылган жок' % word))
-
+            raise Exception(f'Мындай "{word}" соз табылган жок')
         for found_word in found_words:
-            generate_all_children(found_word)
+            result.extend(generate_all_children(found_word))
     else:
         for word in Word.select():
-            generate_all_children(word)
+            result.extend(generate_all_children(word))
+    return result
 
 
-def generate_all_children(word):
+def generate_all_children(word: Word):
+    words = []
     word_object = KyrgyzWord(word.word)
-    print(word_object.word)
+    words.append(word_object.word)
     try:
         features_names = get_word_affixes(word.type)
         features_names.extend(get_extra_word_affixes(word.type))
@@ -34,5 +35,5 @@ def generate_all_children(word):
 
         for feature in features.values():
             for result in feature.generate_results():
-                result = unicode(result)
-                print(result)
+                words.append(result)
+    return words

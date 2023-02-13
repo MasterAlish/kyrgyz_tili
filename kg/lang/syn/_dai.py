@@ -1,4 +1,3 @@
-# coding=utf-8
 from kg.lang.affix import Affix
 
 
@@ -11,17 +10,17 @@ class DaiZatMuchosu(Affix):
         return [DaiZatMuchosu.make]
 
     mucholor = [
-        [u"дай", (u"дой", u"дай",), u"дей", u"дөй"],
-        [u"дай", (u"дой", u"дай",), u"дей", u"дөй"],
-        [u"дай", (u"дой", u"дай",), u"дей", u"дөй"],
-        [u"тай", (u"той", u"тай",), u"тей", u"төй"],
+        ["дай", ("дой", "дай",), "дей", "дөй"],
+        ["дай", ("дой", "дай",), "дей", "дөй"],
+        ["дай", ("дой", "дай",), "дей", "дөй"],
+        ["тай", ("той", "тай",), "тей", "төй"],
     ]
 
     def make(self, jak=1, jeke=True, sylyk=False):
         if self.word_object.unsuz_end_type and self.word_object.unduu_type:
             index_i, index_j = self.indexes[self.word_object.unsuz_end_type][self.word_object.unduu_type]
             mucho = self.mucholor[index_i][index_j]
-            start_of_result = self.word_object.word + u""
+            start_of_result = self.word_object.word + ""
             end_of_result = mucho
             if isinstance(end_of_result, tuple):
                 if self.word_object.unduu_type_jaaktuu:
